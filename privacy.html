@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy — ColdStamp</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <header class="brand">
+        <a class="wordmark" href="./">ColdStamp</a>
+      </header>
+
+      <h1>Privacy policy</h1>
+      <p class="meta">Version 1.0 · effective 7 June 2026 · last reviewed 7 June 2026</p>
+
+      <p class="lead">
+        ColdStamp exists to help you keep your own honest record of online checkouts.
+        It would be hypocritical to do that while collecting your data. This policy
+        explains, in plain language, exactly what ColdStamp does and does not do with
+        information about you.
+      </p>
+
+      <h2>Short version</h2>
+      <ul>
+        <li>Everything ColdStamp captures stays on your device.</li>
+        <li>No data is transmitted to ColdStamp or any third party.</li>
+        <li>No account, no login, no email collected.</li>
+        <li>You can delete everything from the extension popup at any time.</li>
+        <li>You must be 18 or older to use ColdStamp.</li>
+      </ul>
+
+      <p>
+        If you are looking for a single sentence: <em>ColdStamp is a local-only tool;
+        we do not have your data because we have not collected it.</em>
+      </p>
+
+      <hr />
+
+      <h2>1. Who we are</h2>
+      <p>
+        ColdStamp is operated by <strong>[OPERATOR NAME]</strong>, based in Melbourne,
+        Australia. For privacy enquiries, contact
+        <a href="mailto:privacy@coldstamp.app">privacy@coldstamp.app</a>.
+      </p>
+      <p>
+        We comply with the Australian Privacy Principles (APPs) under the Privacy Act
+        1988 (Cth). We do not rely on the small-business exemption.
+      </p>
+
+      <h2>2. What ColdStamp does</h2>
+      <p>
+        ColdStamp is a Chrome browser extension with two functions:
+      </p>
+      <ol>
+        <li>
+          <strong>Preventative detection.</strong> On checkout-like pages it reads the
+          DOM (the page's content) and looks for patterns associated with hidden
+          subscription charges, pre-ticked add-ons, buried renewal terms, mismatched
+          totals, and guilt-trip decline buttons. When it finds one, it shows a small
+          panel in the corner of the page describing the issue.
+        </li>
+        <li>
+          <strong>Evidence capture.</strong> When you click a primary checkout button
+          (e.g. <em>Subscribe</em>, <em>Start free trial</em>, <em>Place order</em>),
+          ColdStamp snapshots the state of the page — which boxes were ticked, what
+          prices were visible, what payment request the page sent — and stores that
+          snapshot locally on your device. This function is OFF by default and only
+          runs after you actively turn it on.
+        </li>
+      </ol>
+
+      <h2>3. What information ColdStamp handles</h2>
+
+      <h3>Stored locally on your device only:</h3>
+      <ul>
+        <li>The URL and title of checkout pages you complete.</li>
+        <li>A snapshot of form fields and checkboxes on the page (with sensitive
+            values redacted — see §4).</li>
+        <li>A timestamped log of your clicks, focus, and scroll events on the page.</li>
+        <li>The amount, currency, and recurring schedule of payment requests the page
+            sent, parsed from the request payload.</li>
+        <li>A SHA-256 hash of the original payment request body (not the body itself).</li>
+        <li>A screenshot of the visible part of the page at the moment you clicked.</li>
+        <li>Your consent settings and preferences.</li>
+      </ul>
+
+      <p>
+        These records sit in your browser's local storage (IndexedDB) and are accessible
+        only to ColdStamp running in your browser. They are not transmitted to us or
+        anyone else.
+      </p>
+
+      <h3>Not collected, ever:</h3>
+      <ul>
+        <li>Your name, email, phone number, or postal address.</li>
+        <li>Your card number, CVV, or expiry. These are redacted before any storage
+            and never written to the snapshot.</li>
+        <li>Your banking or financial account credentials.</li>
+        <li>Your browsing history outside checkout pages.</li>
+        <li>Your IP address, device fingerprint, or any persistent identifier we
+            generated about you. <em>(See §8 on device identifiers.)</em></li>
+      </ul>
+
+      <h2>4. How we redact sensitive data</h2>
+      <p>
+        Before any form field is written to storage, ColdStamp checks whether it
+        matches a sensitive pattern: HTML <code>autocomplete</code> attribute of
+        <code>cc-number</code>, <code>cc-csc</code>, <code>cc-exp</code>, or
+        <code>email</code>; field name or id containing "card", "cvv", "cvc", "csc";
+        or a value that matches a card-shaped digit sequence or an email regex. Any
+        such value is replaced with <code>[REDACTED]</code> at capture time. The
+        unredacted value is never written to storage.
+      </p>
+      <p>
+        Payment request bodies are never stored. Only a SHA-256 hash of the body is
+        retained, along with the parsed amount/currency/recurring fields.
+      </p>
+      <p>
+        Redaction is defensive, not formally audited. If you spot something we miss,
+        please tell us via the contact address above.
+      </p>
+
+      <h2>5. What data we transmit</h2>
+      <p>
+        At this version of ColdStamp (v0.2), the answer is <strong>none</strong>.
+        Nothing is sent from your browser to any ColdStamp server. There is no
+        ColdStamp server in the current release.
+      </p>
+      <p>
+        Future versions may offer optional features that require server interaction
+        (for example, an independent timestamp anchor or an encrypted backup). Each
+        such feature will have its own separate, opt-in consent toggle. We will not
+        retroactively use existing data for new purposes without asking you again.
+      </p>
+
+      <h2>6. Your consent</h2>
+      <p>
+        When you first install ColdStamp you are asked to confirm you are 18 or
+        older and to opt into the evidence-capture feature. All consent toggles
+        default to OFF.
+      </p>
+      <p>
+        Your consent must be voluntary, informed, current, specific, and
+        unambiguous. You can withdraw any consent at any time from the extension
+        settings; withdrawing will stop the relevant feature from running going
+        forward.
+      </p>
+      <p>
+        The preventative-detection panel is read-only and runs without storing
+        anything about you, so it operates regardless of consent state. If you
+        want to turn it off entirely, uninstall the extension or disable it in
+        your browser's extensions page.
+      </p>
+
+      <h2>7. Children</h2>
+      <p>
+        ColdStamp is not intended for use by anyone under 18. We do not knowingly
+        accept users under 18. If you believe a child has installed ColdStamp,
+        please uninstall it from their browser.
+      </p>
+
+      <h2>8. Device identifiers</h2>
+      <p>
+        Under Australian Privacy Principle guidance, device identifiers can constitute
+        personal information. ColdStamp does not generate or store any persistent
+        identifier about you or your device. The local storage of bundles is keyed
+        by random UUIDs that are generated per-record and are not linked to you.
+      </p>
+
+      <h2>9. Automated decision-making (disclosure)</h2>
+      <p>
+        At this version, ColdStamp's detectors are <strong>deterministic rule-based
+        classifiers</strong> running on-device. They flag patterns; they do not make
+        any decision about you. The output (a panel) is informational only.
+      </p>
+      <p>
+        Future versions may use more sophisticated classification, including machine
+        learning, to identify dark patterns. If we introduce such features, we will:
+      </p>
+      <ul>
+        <li>Disclose the logic and consequences of the classification in this policy.</li>
+        <li>Make the feature explicitly opt-in.</li>
+        <li>Run the classification on your device whenever technically possible.</li>
+        <li>Provide a way to see what the classifier said and why.</li>
+      </ul>
+      <p>
+        No such classifier exists in the current release. This section is here in
+        advance so the disclosure is part of the policy from day one.
+      </p>
+
+      <h2>10. Data retention and deletion</h2>
+      <p>
+        You control retention. Bundles stay in your browser until you delete them.
+        From the extension popup you can:
+      </p>
+      <ul>
+        <li>Delete an individual bundle.</li>
+        <li>Delete all bundles.</li>
+      </ul>
+      <p>
+        Uninstalling the extension removes all of its local storage. There is
+        nothing held server-side for us to delete on your behalf, because nothing
+        is held server-side.
+      </p>
+
+      <h2>11. Your rights</h2>
+      <p>
+        Under the Australian Privacy Principles you have rights of access to and
+        correction of personal information held about you. Because ColdStamp holds
+        no personal information about you on any server, in practice these rights
+        are exercised by you directly: you can export, view, or delete any local
+        bundle from the extension popup at any time.
+      </p>
+      <p>
+        If you have a privacy complaint, please contact us first at
+        <a href="mailto:privacy@coldstamp.app">privacy@coldstamp.app</a>. If we do
+        not resolve it to your satisfaction, you can contact the Office of the
+        Australian Information Commissioner (<a href="https://www.oaic.gov.au">oaic.gov.au</a>).
+      </p>
+
+      <h2>12. Open source</h2>
+      <p>
+        ColdStamp's extension source code is open and auditable. You can read the
+        redaction, storage, and detection logic for yourself. Repository link will
+        be published here once the public release is shipped.
+      </p>
+
+      <h2>13. Changes to this policy</h2>
+      <p>
+        If we change this policy, we will update the version number and effective
+        date at the top of the page. We will surface material changes in the
+        extension itself the next time you open it, so you don't have to come back
+        here to check.
+      </p>
+
+      <hr />
+
+      <p class="meta">
+        This policy is written in plain language on purpose. If anything here is
+        unclear, that is a bug — please tell us.
+      </p>
+
+      <footer>
+        <a href="./">← back to ColdStamp</a>
+      </footer>
+    </main>
+  </body>
+</html>

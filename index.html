@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ColdStamp — your symmetric record of what they charged you for</title>
+    <meta name="description" content="A browser extension that warns you about dark patterns at checkout and quietly keeps your own record of what the page showed and what you consented to." />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <header class="brand">
+        <a class="wordmark" href="./">ColdStamp</a>
+      </header>
+
+      <h1>Your symmetric record of what you signed up for.</h1>
+      <p class="lead">
+        Subscription vendors keep structured logs of every signup. You keep a vague memory.
+        ColdStamp is the user's side of that record — it warns about pre-ticked boxes and
+        buried renewal terms before you click, then quietly keeps your own evidence of what
+        the page showed and what you agreed to.
+      </p>
+
+      <h2>How it works</h2>
+      <p>
+        ColdStamp is a Chrome extension. On checkout pages it does two things:
+      </p>
+      <ol>
+        <li>
+          <strong>Warns you</strong> — a small corner panel flags pre-ticked recurring
+          charges, buried renewal terms, totals that don't add up, and guilt-trip
+          decline buttons. Five deterministic detectors, conservative on purpose:
+          we'd rather miss a dark pattern than cry wolf.
+        </li>
+        <li>
+          <strong>Keeps your own record</strong> — when you click the primary button,
+          it snapshots the page state, redacts your card details, hashes the result, and
+          stores it locally on your device. Nothing leaves the browser.
+        </li>
+      </ol>
+
+      <h2>What it isn't</h2>
+      <ul>
+        <li>It does not file disputes for you.</li>
+        <li>It does not connect to your bank or card.</li>
+        <li>It does not cancel subscriptions.</li>
+        <li>It does not transmit any data over the internet.</li>
+      </ul>
+
+      <h2>Status</h2>
+      <p>
+        Currently in private preview. Heading to the Chrome Web Store soon.
+      </p>
+
+      <hr />
+
+      <h2>Links</h2>
+      <ul>
+        <li><a href="./privacy.html">Privacy policy</a></li>
+      </ul>
+
+      <footer>
+        ColdStamp · made in Melbourne, Australia.
+      </footer>
+    </main>
+  </body>
+</html>
