@@ -79,17 +79,18 @@
       <details>
         <summary>If my card number and email are redacted, can I still prove the charge was mine in a dispute?</summary>
         <p>
-          Yes. You don't need to re-prove the charge was yours — your bank already
-          knows that, because they are the ones charging your card. The dispute
-          form ties your identity to the transaction.
+          Yes. You don't need to re-prove the charge was yours — whoever is
+          billing you (your bank, PayPal, Apple, Google Play, or another
+          payment processor) already knows that. The dispute or refund form
+          ties your identity to the transaction.
         </p>
         <p>
-          What the ColdStamp bundle proves is something the bank can't see on
+          What the ColdStamp bundle proves is something they can't see on
           their own: <strong>what the merchant's checkout page actually showed</strong>
           at the moment you clicked. That is the part you have always lacked in
-          a chargeback. With the bundle, you have a structured, timestamped,
-          tamper-evident record of pre-ticked boxes, buried renewal terms, and the
-          real payment request the page sent.
+          a dispute. With the bundle, you have a structured, timestamped,
+          tamper-evident record of pre-ticked boxes, buried renewal terms, and
+          the real payment request the page sent.
         </p>
         <p>
           To help you recognise which bundle corresponds to which account, each
@@ -106,38 +107,63 @@
           number sitting in plain text inside it. Second, storing card numbers in
           user-facing files would put ColdStamp under PCI rules; redaction keeps
           the tool firmly outside payment-handling regulation. Third, the
-          merchant and your bank already have the card — re-storing it on your
-          side adds risk without adding evidence.
+          merchant and whoever processes your payments already have the card —
+          re-storing it on your side adds risk without adding evidence.
         </p>
       </details>
 
       <details>
-        <summary>How do I actually use a bundle in a chargeback?</summary>
+        <summary>How do I actually use a bundle in a dispute?</summary>
         <p>
           Open the extension popup, find the bundle for the disputed merchant,
           click <strong>Export</strong> to download the JSON file. Attach it to
-          your chargeback claim. In the claim text, point to the specific
-          findings — for example: <em>"Recurring add-ons were pre-ticked
-          and never interacted with (see <code>controlState</code> entries
-          where <code>defaultChecked: true</code> and
+          whichever dispute or refund form you're filling out. In the claim
+          text, point to the specific findings — for example: <em>"Recurring
+          add-ons were pre-ticked and never interacted with (see
+          <code>controlState</code> entries where
+          <code>defaultChecked: true</code> and
           <code>userInteracted: false</code>). The recurring price was buried
-          in 11px grey text, while the headline displayed <code>$0 today</code>."</em>
+          in 11px grey text, while the headline displayed
+          <code>$0 today</code>."</em>
         </p>
         <p>
-          Banks generally weigh disclosure quality at the point of sale under
-          Mastercard and Visa dispute rules. A structured DOM snapshot is
+          Card-issuing banks weigh disclosure quality at the point of sale
+          under Mastercard and Visa dispute rules. App stores and payment
+          processors apply their own subscription and refund policies, but the
+          underlying question — <em>did the user understand what they were
+          agreeing to?</em> — is the same. A structured DOM snapshot is
           stronger evidence than a pixel screenshot, because it captures the
-          actual page state and the payment request the page sent.
+          actual page state and the real payment request the page sent.
         </p>
       </details>
 
       <details>
-        <summary>Does ColdStamp connect to my bank, card, or any merchant account?</summary>
+        <summary>What if my subscription is billed through the App Store or Google Play?</summary>
         <p>
-          No. ColdStamp never talks to your bank, your card provider, or any
-          merchant's account system. It reads the page in your browser, on your
-          device, only when that page looks like a checkout. There is no
-          ColdStamp server.
+          Many subscriptions you sign up for in a browser are actually
+          processed by Apple, Google Play, Amazon, or a similar intermediary
+          rather than charged directly to your card. ColdStamp captures the
+          web-checkout step the same way regardless of who ultimately
+          processes the payment.
+        </p>
+        <p>
+          The dispute path is different — instead of contacting your bank, you
+          request a refund through the store (Apple: <em>Report a Problem</em>;
+          Google Play: <em>Order history → Report an issue</em>). Attach the
+          exported bundle and quote the specific finding (pre-ticked recurring
+          opt-in, buried renewal price, mismatched total) in your reason for
+          the refund. App stores explicitly accept structured evidence about
+          unclear or deceptive checkout flows in their refund decisions.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does ColdStamp connect to my bank, card, app store account, or any merchant account?</summary>
+        <p>
+          No. ColdStamp never talks to your bank, your card provider, your
+          Apple or Google account, or any merchant's account system. It reads
+          the page in your browser, on your device, only when that page looks
+          like a checkout. There is no ColdStamp server.
         </p>
       </details>
 
