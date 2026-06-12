@@ -108,11 +108,20 @@ hr {
 }
 
 footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: var(--faint);
   font-size: 13px;
   margin-top: 72px;
   border-top: 1px solid var(--rule);
   padding-top: 16px;
+}
+footer svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
 }
 footer a { color: var(--faint); }
 
