@@ -131,3 +131,33 @@ code {
   padding: 1px 6px;
   border-radius: 3px;
 }
+
+details {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0 16px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+details[open] { background: #f7fafc; }
+details summary {
+  cursor: pointer;
+  padding: 14px 0;
+  font-weight: 600;
+  color: var(--fg);
+  list-style: none;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "+";
+  display: inline-block;
+  width: 18px;
+  color: var(--faint);
+  font-weight: 400;
+}
+details[open] summary::before { content: "−"; }
+details > p {
+  margin: 0 0 14px;
+  padding-left: 18px;
+}
+details > p:last-child { margin-bottom: 14px; }
